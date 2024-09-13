@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icia.movic.dao.UserDao">
+    <insert id="insertUser" parameterType="UserDto">
+        insert into usertbl
+        values (#{uid},#{upass},#{uname},#{uage},#{uaddr},#{ugender}
+               , #{uregnum},#{uphonenum},null)
+    </insert>
+    <delete id="deleteUser" parameterType="String">
+        delete from usertbl
+        where uid=#{uid}
+    </delete>
+    <select id="checkId" parameterType="string" resultType="int">
+        select count(*) from usertbl where uid=#{uid}
+    </select>
+    <select id="selectId" resultType="String" parameterType="MovicDto">
+        select uid from usertbl where uname=#{uname} and uphonenum=#{uphonenum}
+    </select>
+    <select id="loginCheck" parameterType="String" resultType="UserDto">
+        select * from usertbl where uid=#{uid}
+    </select>
+    <select id="getuserList" resultType="com.icia.movic.dto.UserDto">
+        select * from usertbl
+        limit #{pageNum},#{listCnt}
+    </select>
+    <select id="selectUserCnt" resultType="java.lang.Integer">
+        select count(*) from usertbl
+    </select>
+    <select id="getuserpayList" resultType="com.icia.movic.dto.PaymentDto">
+        select * from payment_view
+        limit #{pageNum}, #{listCnt}
+    </select>
+    <select id="selectUserCntPL" resultType="java.lang.Integer">
+        select count(*) from payment_view
+    </select>
+</mapper>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icia.movic.dao.MovicDao">
+    <insert id="insertMovic">
+        insert into movietbl
+        values (null,#{m_title},#{m_director},#{m_nation},#{m_language},
+                #{m_genre},#{m_actor},#{m_open},#{m_synopsis},#{p_sysname},#{v_sysname})
+    </insert>
+    <insert id="insertBookMark" parameterType="BookMarkDto">
+        insert into bookmarktbl
+        values (null,#{b_uid},#{b_mcode})
+    </insert>
+    <delete id="deleteMovie" parameterType="Integer">
+        delete from movietbl where m_code =#{m_code}
+    </delete>
+    <select id="selectMovicList" resultType="MovicDto" parameterType="HashMap">
+        select * from movietbl
+        <if test="keyword != null and keyword != ''">
+            where (m_title like concat('%', #{keyword}, '%') or m_actor like concat('%', #{keyword}, '%'))
+            <if test="genre != null and genre != ''">
+                and m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        <if test="keyword == null or keyword == ''">
+            <if test="genre != null and genre != '' and (keyword == null or keyword == '')">
+                where m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        limit #{pageNum}, #{listCnt}
+    </select>
+    <select id="selectMovicCnt" resultType="Integer" parameterType="HashMap">
+        select count(*) from movietbl
+        <if test="keyword != null and keyword != ''">
+            where (m_title like concat('%', #{keyword}, '%') or m_actor like concat('%', #{keyword}, '%'))
+            <if test="genre != null and genre != ''">
+                and m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        <if test="keyword == null or keyword == ''">
+        <if test="genre != null and genre != '' and (keyword == null or keyword == '')">
+            where m_genre like concat('%', #{genre}, '%')
+        </if>
+        </if>
+
+    </select>
+    <select id="selectMovicListByGenre" parameterType="HashMap" resultType="com.icia.movic.dto.MovicDto">
+        select * from movietbl
+        <if test="m_genre != null and m_genre != ''">
+            where m_genre like concat('%', #{keyword}, '%')
+        </if>
+        limit #{pageNum}, #{listCnt}
+    </select>
+    <select id="selectMovieDetail" resultType="MovicDto">
+        select * from movietbl where m_code=#{m_code}
+    </select>
+    <select id="getBookMark" resultType="int">
+        select count(*)
+        from bookmark
+        where m_code = #{m_code} and m_title=#{m_title} and v_sysname = #{v_sysname} and uid = #{uid}
+    </select>
+    <select id="selectBookmarkList" resultType="BookMarkDto" parameterType="HashMap">
+            select * from blist
+            where b_uid=#{uid}
+            <if test="keyword != null and keyword != ''">
+                and (m_title like concat('%', #{keyword}, '%') or m_actor like concat('%', #{keyword}, '%'))
+                <if test="genre != null and genre != ''">
+                    and m_genre like concat('%', #{genre}, '%')
+                </if>
+            </if>
+            <if test="keyword == null or keyword == ''">
+                <if test="genre != null and genre != '' and (keyword == null or keyword == '')">
+                    and m_genre like concat('%', #{genre}, '%')
+                </if>
+            </if>
+            limit #{pageNum}, #{listCnt}
+    </select>
+
+    <!-- 북마크 취소 -->
+    <delete id="deleteBookMark" parameterType="Integer">
+        delete from bookmarktbl
+        where b_code = #{b_code}
+    </delete>
+    <select id="selectMovicListPopular" resultType="MovicDto" parameterType="HashMap">
+        select m_title, m_director, m_nation, m_language, m_genre, m_actor, m_open, m_synopsis, p_sysname, v_sysname from payment_view
+        <if test="keyword != null and keyword != ''">
+            where (m_title like concat('%', #{keyword}, '%') or m_actor like concat('%', #{keyword}, '%'))
+            <if test="genre != null and genre != ''">
+                and m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        <if test="keyword == null or keyword == ''">
+            <if test="genre != null and genre != '' and (keyword == null or keyword == '')">
+                where m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        group by p_payment
+        order by count(*) desc
+        limit #{pageNum}, #{listCnt}
+    </select>
+    <select id="selectMovicPopularCnt" resultType="java.lang.Integer" parameterType="HashMap">
+        select count(p.p_payment) from (select p_payment, count(p_payment) from payment_view
+        <if test="keyword != null and keyword != ''">
+            where (m_title like concat('%', #{keyword}, '%') or m_actor like concat('%', #{keyword}, '%'))
+            <if test="genre != null and genre != ''">
+                and m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        <if test="keyword == null or keyword == ''">
+            <if test="genre != null and genre != '' and (keyword == null or keyword == '')">
+                where m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        group by p_payment) as p
+        order by count(*) desc
+    </select>
+    <select id="selectMovicBookmarkCnt" resultType="java.lang.Integer" parameterType="HashMap">
+        select count(*) from blist
+        where b_uid=#{uid}
+        <if test="keyword != null and keyword != ''">
+            and (m_title like concat('%', #{keyword}, '%') or m_actor like concat('%', #{keyword}, '%'))
+            <if test="genre != null and genre != ''">
+                and m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+        <if test="keyword == null or keyword == ''">
+            <if test="genre != null and genre != '' and (keyword == null or keyword == '')">
+                and m_genre like concat('%', #{genre}, '%')
+            </if>
+        </if>
+    </select>
+
+</mapper>

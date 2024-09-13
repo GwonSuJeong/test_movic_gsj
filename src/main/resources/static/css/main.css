@@ -1,0 +1,350 @@
+header {
+    /* Navigation */
+
+    position: fixed;
+    height: 134px;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+
+    background: #FFFFFF;
+    z-index: 1;
+}
+
+body {
+    background: #ADA5F3;
+    
+}
+
+#logo {
+    order: 0;
+    position: absolute;
+    width: 96px;
+    height: 102px;
+    align-items: center;
+    left: 40px;
+    top: 15px;
+}
+
+#logotext {
+    /* To infinity and beyond */
+
+    position: absolute;
+    width: 325px;
+    height: 45px;
+    left: 160px;
+    top: 46px;
+
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
+ 
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 150%;
+    /* identical to box height, or 45px */
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+
+}
+
+#navi {
+    /* Items */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 48px;
+
+    position: absolute;
+    width: 337px;
+    height: 52px;
+    right: 20px;
+    top: 40px;
+
+
+}
+
+#login {
+    /* Button */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 8px;
+    font-weight: bold;
+    width: 93px;
+    height: 52px;
+    color: white;
+    background: #000000;
+    /* Button Shadow */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+#navtext {
+    /* 회원가입 */
+
+    width: 74px;
+    height: 30px;
+
+    /* Body text
+
+Text for body copy
+*/
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    /* identical to box height, or 30px */
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+#layout {
+    /* Pricing Grid */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 0px;
+    gap: 32px;
+
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    left: 5%;
+    top: 186px;
+
+
+}
+
+#movie-item {
+    /* Pricing */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 48px;
+    gap: 32px;
+    /* align-items: center; */
+    margin-right: 50px;
+    width: 420px;
+    height: 528px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.1), 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+#movie-item:nth-child(3n) {
+    margin-right: 0;
+}
+
+#movie-item:nth-child(n+2){
+    opacity: 0.5;
+}
+.gameimg {
+    /* Rectangle 13 */
+
+    width: 420px;
+    height: 304px;
+
+    background: url(../img/2048.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+
+.gamename {
+    /* Header */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+
+    width: 100%;
+    height: 100px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.gametitle {
+    /* 2048 */
+
+    width: 100%;
+    height: 44px;
+
+    /* Heading
+
+Headers for your page
+*/
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 110%;
+    /* identical to box height, or 44px */
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.gamesmall {
+    /* 게임 */
+
+    width: 100px;
+    height: 30px;
+
+    /* Small text
+
+Small text
+*/
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+    flex: auto;
+    order: 1;
+    flex-grow: 0;
+
+}
+
+.gamestart {
+    /* Button */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 8px;
+
+
+    height: 52px;
+
+    background: #000000;
+
+    /* Button Shadow */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: "Gugi", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 150%;
+    /* identical to box height, or 24px */
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+
+}
+
+div.description {
+    height: 250px;
+    width: 300px;
+    top: 1000px;
+    color: #333;
+    font-family: nunito;
+    transform: translate(-50%, -50%) scale(0);
+    position: absolute;
+    left: 50%;
+    top: 425px;
+    background: #fff;
+    padding: 50px;
+    border-radius: 0px;
+    z-index: 1000;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 15px;
+    transition: 0.3s all;
+  }
+
+  .description.show {
+    visibility: visible;
+    opacity: 1;
+    font-size: 15px;
+    transform: translate(-50%, -50%) scale(1);
+    transition: 0.3s all;
+  }
+
+

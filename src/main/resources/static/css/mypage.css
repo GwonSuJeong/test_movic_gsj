@@ -1,0 +1,72 @@
+/**{*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*}*/
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F2F2F2;
+}
+
+.layout {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+.info {
+    text-align: center;
+}
+
+.sign-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* 필요에 따라 조정 */
+}
+
+.sign-form .acc {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.navyBtn {
+    padding: 10px;
+    background-color: #D5C4F2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.navyBtn:hover {
+    background-color: #BCA4E4;
+}
+.sign-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.sign-form div {
+    margin-bottom: 15px;
+}
+.sign-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.acc {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
